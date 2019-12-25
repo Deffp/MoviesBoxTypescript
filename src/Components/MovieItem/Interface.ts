@@ -1,0 +1,8 @@
+export interface IMovieItem {
+  movie: {
+    id: number;
+    title: string;
+    release_date: string;
+    vote_average: number;
+  };
+}
