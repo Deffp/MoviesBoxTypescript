@@ -1,50 +1,46 @@
-import React from 'react';
-import { Row, Col } from 'react-bootstrap';
-import { Link, withRouter } from 'react-router-dom';
-// eslint-disable-next-line object-curly-newline
-import { FaFacebookF, FaPinterestP, FaTwitter, FaInstagram } from 'react-icons/fa';
+import React from "react";
+import { Link, withRouter } from "react-router-dom";
+import { FaFacebookF, FaPinterestP, FaTwitter, FaInstagram } from "react-icons/fa";
 
-import './Footer.css';
+import "./Footer.css";
 
-const Footer = () => (
-  <Row className="footer">
-    <Col xl={2} sm={12} className="footerLogo">
-      Themovie
-      <span className="boldText">box</span>
-    </Col>
-    <Col className="links" xl={10}>
-      <Link className="footerLink" to="About">
+const Footer: React.FC = () => (
+  <div className='footer'>
+    <span className='footerLogo'>
+      themovie<span className='boldText'>box</span>
+    </span>
+    <span className='designedName'>Designed by Milan Houter. All rights reserver.</span>
+    <div className='underscore' />
+    <div className='infoLinks'>
+      <Link className='infoLink' to='about'>
         About
       </Link>
-      <Link className="footerLink" to="Movies">
+      <Link className='infoLink' to='movies'>
         Movies
       </Link>
-      <Link className="footerLink" to="Ratings">
+      <Link className='infoLink' to='ratings'>
         Ratings
       </Link>
-      <Link className="footerLink" to="Contact">
+      <Link className='infoLink' to='contact'>
         Contact
       </Link>
-    </Col>
-    <Col xl={12} className="underScore" />
-    <Col xl={8}>
-      <span className="designer">Disigned by Milan Houter. All rights reserved.</span>
-    </Col>
-    <Col className="iconLinks" xl={4} sm={12}>
-      <Link className="iconLink" to="Facebook">
+    </div>
+
+    <div className='footerImgLinks'>
+      <Link className='imgLink' to='facebook'>
         <FaFacebookF />
       </Link>
-      <Link className="iconLink" to="Pinterest">
+      <Link className='imgLink' to='pinterest'>
         <FaPinterestP />
       </Link>
-      <Link className="iconLink" to=" Twitter">
+      <Link className='imgLink' to='twitter'>
         <FaTwitter />
       </Link>
-      <Link className="iconLink" to="Instagram">
+      <Link className='imgLink' to='instagram'>
         <FaInstagram />
       </Link>
-    </Col>
-  </Row>
+    </div>
+  </div>
 );
 
 export default withRouter(Footer);

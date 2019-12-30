@@ -1,68 +1,114 @@
 .footer {
-  background: #ffffff;
   height: 150px;
-  margin: 0px;
-  padding: 0px;
   position: relative;
+  background: #ffffff;
 }
 
 .footerLogo {
-  margin-top: 20px;
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: normal;
+  top: 20px;
+  left: 80px;
   font-size: 25px;
-  line-height: 31px;
-  text-transform: uppercase;
   color: #494c62;
-  text-align: center;
-}
-
-.links {
-  margin-top: 20px;
-  text-align: end;
-  padding-right: 60px;
-}
-
-.footerLink {
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 31px;
-  color: #80818a;
-  margin: 15px;
-}
-
-.underScore {
   position: absolute;
-  top: 70px;
+  text-transform: uppercase;
+  font-family: Source Sans Pro;
+}
+
+.designedName {
+  font-size: 14px;
+  position: absolute;
+  color: #80818a;
+  font-family: Source Sans Pro;
+  left: 80px;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  top: 80px;
+}
+
+.underscore {
+  position: absolute;
   mix-blend-mode: normal;
   opacity: 0.2;
   border: 1px solid #babbc3;
+  top: 65px;
+  left: 80px;
+  width: 91%;
 }
 
-.footerSocialLinks {
-  margin: 0px;
-  padding: 0px;
+.infoLinks {
+  position: absolute;
+  right: 80px;
+  top: 25px;
 }
 
-.designer {
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 15px;
+.infoLink {
+  padding: 15px;
   color: #80818a;
-  mix-blend-mode: normal;
-  padding-left: 45px;
-  opacity: 0.5;
+  font-family: Source Sans Pro;
 }
 
-.iconLinks {
-  text-align: center;
+.footerImgLinks {
+  position: absolute;
+  right: 80px;
+  top: 80px;
 }
 
-.iconLink {
-  padding: 30px;
+.imgLink {
+  color: #babbc3;
+  padding: 5px;
+}
+
+@media (max-width: 411px) {
+  .footerLogo {
+    left: 100px;
+  }
+  .infoLinks {
+    top: 55px;
+    right: 60px;
+  }
+  .underscore {
+    width: 100%;
+    left: 0;
+    top: 80px;
+  }
+  .designedName {
+    top: 120px;
+  }
+
+  .footerImgLinks {
+    top: 80px;
+    right: 69px;
+  }
+
+  .imgLink {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .footerLogo {
+    left: 85px;
+  }
+  .infoLinks {
+    top: 55px;
+    right: 25px;
+  }
+  .underscore {
+    width: 100%;
+    left: 0;
+    top: 80px;
+  }
+  .designedName {
+    top: 110px;
+    font-size: 13px;
+  }
+
+  .footerImgLinks {
+    top: 80px;
+    right: 25px;
+  }
+
+  .imgLink {
+    padding: 30px;
+  }
 }
