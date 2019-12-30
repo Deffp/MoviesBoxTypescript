@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Card } from 'react-bootstrap';
 
-import { IAltMoviePoser } from './Interface';
 import { IMovie } from '../../Interface/Interface';
 
-export default class AltMoviePoster extends Component<any> {
+export default class AltMoviePoster extends Component<{
+  movie: IMovie;
+}> {
   checkMoviePoster = () => {
     const { movie } = this.props;
     return movie.poster_path ? (

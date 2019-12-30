@@ -3,12 +3,12 @@ export interface IMovie {
   backdrop_path: string | null;
   belongs_to_collection: null | object;
   budget: number;
-  genres: Array<object>;
+  genres: any;
   homepage: string | null;
   id: number;
   imdb_id: number | null;
   original_language: string;
-  genresList: Array<object>;
+  genresList: any;
   original_title: string;
   overview: string | null;
   popularity: number;
@@ -21,7 +21,7 @@ export interface IMovie {
   spoken_languages: Array<object>;
   status: string;
   tagline: string | null;
-  genre_ids: Array<object>;
+  genre_ids: any;
   title: string;
   video: boolean;
   vote_average: number;
@@ -44,5 +44,3 @@ export interface IRouteProps {
   };
   staticContext: any;
 }
-
-export interface IGenresList {}

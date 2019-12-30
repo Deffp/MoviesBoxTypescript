@@ -1,28 +1,27 @@
-import { observable } from 'mobx';
+import { observable, toJS, action } from 'mobx';
 import { persist } from 'mobx-persist';
 import _ from 'lodash';
 
 import { IMovie } from '../Interface/Interface';
 import MovieAPI from '../MovieAPI/MovieAPI';
-import RootStore from './RootStore';
 
 class MoviesStore {
-  @observable moviesList: any = [];
+  @observable moviesList: Array<IMovie> = [];
 
   @observable genresList: Array<object> = [];
 
-  @observable loading = true;
+  @observable loading: boolean = true;
 
   @persist('object') @observable movie: any = { genresList: [] };
 
-  @observable setMovies = async (page: number) => {
+  @action setMovies = async (page: number) => {
     try {
       const movies = await MovieAPI.getAllMovies(page);
       const genresList = await MovieAPI.getGenres();
       const genresIndex = _.keyBy(genresList, 'id');
       const moviesList = movies.map((movie: IMovie) => ({
         ...movie,
-        genresList: movie.genre_ids.map((id: any) => genresIndex[id]),
+        genresList: movie.genre_ids.map((id: number) => genresIndex[id]),
       }));
       this.moviesList = [...moviesList];
       this.genresList = [...genresList];
@@ -33,29 +32,20 @@ class MoviesStore {
     }
   };
 
-  @observable setMovie = async (idMovie: number) => {
+  @action setMovie = async (idMovie: number) => {
     try {
       const genresList = await MovieAPI.getGenres();
+      const movie = await MovieAPI.getMovieItem(idMovie);
       const genresIndex = _.keyBy(genresList, 'id');
-      const movie = this.moviesList.find((m: IMovie) => m.id === idMovie);
       const selectedMovie = {
         ...movie,
-        genresList: movie.genre_ids.map((id: number) => genresIndex[id]),
+        genresList: movie.genres.map((id: { id: number }) => genresIndex[id.id]),
       };
       this.movie = {
         ...selectedMovie,
       };
-    } catch (fvlist) {
-      const genresList = await MovieAPI.getGenres();
-      const genresIndex = _.keyBy(genresList, 'id');
-      const movie = RootStore.FavoriteMoviesStore.favoriteMoviesList.find((m: IMovie) => m.id === idMovie);
-      const selectedMovie = {
-        ...movie,
-        genresList: movie!.genre_ids.map((id: any) => genresIndex[id]),
-      };
-      this.movie = {
-        ...selectedMovie,
-      };
+    } catch (error) {
+      console.log(toJS(error));
     } finally {
       this.loading = false;
     }

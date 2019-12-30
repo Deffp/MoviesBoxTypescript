@@ -7,13 +7,12 @@
 
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
-
-import _ from 'lodash';
-import classNames from 'classnames/bind';
 import { Container, Row, Image, Col } from 'react-bootstrap';
-import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import _ from 'lodash';
+import classNames from 'classnames/bind';
+import moment from 'moment';
 
 import { IMovie } from '../../Interface/Interface';
 import { ISelectedMovie } from './Interface';
@@ -23,7 +22,7 @@ import Footer from '../Footer/Footer';
 import Loader from '../Loader/Loader';
 import './SelectedMovieItem.css';
 
-class SelectedMovieItem extends Component<ISelectedMovie> {
+class SelectedMovieItem extends Component<ISelectedMovie, { movie: IMovie }> {
   componentDidMount() {
     const { setMovie } = RootStore.MoviesStore;
     const {
@@ -32,13 +31,11 @@ class SelectedMovieItem extends Component<ISelectedMovie> {
       },
     } = this.props;
     setMovie(parseInt(id));
-    console.log(this.state);
-    console.log(this.props);
   }
 
-  displayGenres = (movie: IMovie) => movie.genresList.map((categorie: any) => categorie.name).join(',');
+  displayGenres = (movie: IMovie) => movie.genresList.map((genres: { name: string }) => genres.name).join(',');
 
-  buttonChange = () => {
+  buttonChange = (): object => {
     const { favoriteMoviesList, addMovie, removeMovie } = RootStore.FavoriteMoviesStore;
     const { movie } = RootStore.MoviesStore;
 

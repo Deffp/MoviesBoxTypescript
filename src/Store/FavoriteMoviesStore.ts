@@ -9,14 +9,14 @@ import MovieAPI from '../MovieAPI/MovieAPI';
 class FavoriteMoviesStore {
   @persist('list') @observable favoriteMoviesList: Array<IMovie> = [];
 
-  @observable loading = true;
+  @observable loading: boolean = true;
 
-  @observable setFavoriteMovies = async () => {
+  @action setFavoriteMovies = async () => {
     const genresList = await MovieAPI.getGenres();
     const genresIndex = _.keyBy(genresList, 'id');
     const favoriteList = this.favoriteMoviesList.map((movie) => ({
       ...movie,
-      genresList: movie.genresList.map((id: any) => genresIndex[id.id]),
+      genresList: movie.genresList.map((id: { id: number }) => genresIndex[id.id]),
     }));
 
     this.favoriteMoviesList = [...favoriteList];

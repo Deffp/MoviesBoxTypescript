@@ -5,11 +5,10 @@ import moment from 'moment';
 
 import './MovieItem.css';
 import { IMovie } from '../../Interface/Interface';
-import { IMovieItem } from './Interface';
 import AltMoviePoster from '../AltMoviePoster/AltMoviePoster';
 
-class MovieItem extends Component<IMovieItem> {
-  renderGenresMovie = (movie: any) => movie.genresList.map((genres: any) => genres.name).join(',');
+class MovieItem extends Component<{ movie: IMovie }> {
+  renderGenresMovie = (movie: IMovie) => movie.genresList.map((genres: { name: string }) => genres.name).join(',');
 
   render() {
     const { movie } = this.props;
