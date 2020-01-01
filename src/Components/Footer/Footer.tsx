@@ -24,7 +24,7 @@ const Footer = () => (
           Contact
         </Link>
       </div>
-      {/* <div className='underscore' /> */}
+      <div className='underscore' />
     </div>
     <div className='imgLinks'>
       <span className='desigend'>Designed by Milan Houter. All rights reserved.</span>
