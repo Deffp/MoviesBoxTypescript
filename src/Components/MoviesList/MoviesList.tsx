@@ -1,39 +1,41 @@
-import React, { Component } from 'react';
-import { Row } from 'react-bootstrap';
-import { observer } from 'mobx-react';
-import RootStore from '../../Store/RootStore';
+import React, { Component } from "react";
+import { observer } from "mobx-react";
+// import RootStore from "../../Store/RootStore";
 
-import MovieItem from '../MovieItem/MovieItem';
-import Pagination from '../Pagination/Pagination';
-import Loader from '../Loader/Loader';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import './MoviesList.css';
-import { IMovie } from '../../Interface/Interface';
-import { IMovieList } from './Interface';
+import MovieItem from "../MovieItem/MovieItem";
+import Pagination from "../Pagination/Pagination";
+import Loader from "../Loader/Loader";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import "./MoviesList.css";
+import MoviesStore from "../../Store/MoviesStore";
+import { IMovie } from "../../Interface/Interface";
+import { IMovieList } from "./Interface";
 
 class MoviesList extends Component<IMovieList> {
   componentDidMount() {
     const {
-      match: { params },
+      match: { params }
     } = this.props;
-    RootStore.MoviesStore.setMovies(params.page);
+    MoviesStore.setMovies(params.page);
   }
 
   renderMovieList = (movie: IMovie) => <MovieItem key={movie.id} movie={movie} />;
 
   render() {
-    const { moviesList, loading } = RootStore.MoviesStore;
+    const { moviesList, loading } = MoviesStore;
     return (
       <div>
         <Header />
         {loading ? (
           <Loader />
         ) : (
-          <Row className="wrapperList">
-            {moviesList.map(this.renderMovieList)}
-            <Pagination location={this.props} />
-          </Row>
+          <div className='wrapperList'>
+            <div className='List'>
+              {moviesList.map(this.renderMovieList)}
+              <Pagination location={this.props} />
+            </div>
+          </div>
         )}
         <Footer />
       </div>

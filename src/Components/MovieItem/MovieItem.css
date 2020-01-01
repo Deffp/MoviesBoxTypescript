@@ -1,61 +1,103 @@
-.movie {
-  position: relative;
-  margin: 20px 0px 20px 0px;
-}
 .wrapperMovie {
-  width: 450px;
-  margin: 0px;
+  width: 420px;
+  height: 470px;
+  background: #ffffff;
+  margin: 10px;
+  position: relative;
+  box-shadow: 0px 2px 35px rgba(0, 0, 0, 0.1);
 }
 
-.releaseDateMovieList {
-  position: absolute;
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 17px;
-  color: #babbc3;
-  bottom: 130px;
+.imgPoster {
+  width: 420px;
+  height: 400px;
 }
 
-.title {
+.infoMovie {
+  padding: 10px;
+}
+
+.titleName {
   font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 25px;
+  width: 60%;
+  color: #494c62;
+  font-size: 25px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: #494c62;
+  font-weight: bold;
 }
 
-.genres {
-  font-family: Source Sans Pro;
-  font-style: normal;
+.genresMovie {
+  color: #babbc3;
+  width: 60%;
   font-weight: 600;
   font-size: 15px;
-  line-height: 16px;
-  color: #babbc3;
   white-space: nowrap;
-  width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: Source Sans Pro;
+}
+
+.gradiend {
+  position: absolute;
+  bottom: 70px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 8e-5) 100%);
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  width: 100%;
+  height: 100px;
 }
 
 .voteAverage {
   position: absolute;
+  right: 25px;
+  bottom: 20px;
+  font-family: Source Sans Pro;
+  font-weight: 600;
   border: 2px solid #ff0079;
   box-sizing: border-box;
   border-radius: 5px;
-  padding: 6px;
-  right: 15px;
-  bottom: 30px;
   color: #ff0079;
-  min-width: 40px;
   text-align: center;
+  width: 30px;
 }
 
-.moviePoster {
-  min-width: 445px;
+.releaseDateMovieList {
+  position: absolute;
+  bottom: 90px;
+  left: 30px;
+  color: #babbc3;
+  font-family: Source Sans Pro;
+}
+
+@media (max-width: 414px) {
+  .wrapperMovie {
+    width: 360px;
+    height: 470px;
+  }
+
+  .imgPoster {
+    width: 360px;
+    height: 380px;
+  }
+
+  .voteAverage {
+    bottom: 30px;
+  }
+}
+
+@media (max-width: 320px) {
+  .wrapperMovie {
+    width: 300px;
+    height: 470px;
+  }
+
+  .imgPoster {
+    width: 300px;
+    height: 380px;
+  }
+
+  .voteAverage {
+    bottom: 30px;
+  }
 }

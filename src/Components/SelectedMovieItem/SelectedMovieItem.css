@@ -1,26 +1,73 @@
-.mainHeader {
-  min-height: 100vh;
+.wrapperSelectedMovieHeader {
+  display: flex;
 }
 
-.wrapperOverview {
-  margin-top: 25px;
-  color: #494c62;
+.topPoster {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+}
+
+.topPosterGradient {
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  width: 100%;
+  height: 100px;
+  margin-bottom: auto;
+}
+
+.infoMovie {
+  margin-top: auto;
+}
+
+.originalTitle {
+  position: absolute;
   font-family: Source Sans Pro;
   font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 45px;
+  bottom: 30px;
+}
+
+.releaseDate {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  text-transform: uppercase;
+  color: #babbc3;
+}
+
+.genres {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  color: #babbc3;
+}
+.info {
+  display: flex;
+  flex-direction: row;
+  min-height: 70vh;
+}
+
+.btnSelectedMovie {
+  margin: 15px 25px 25px 25px;
 }
 
 .buttonFavorite {
-  margin-top: 10px;
+  width: 250px;
   border: 2px solid #ff0079;
   background: #ffffff;
   color: #ff0079;
   font-family: Source Sans Pro;
   border-radius: 3px;
   font-style: normal;
-  width: 250px;
   font-size: 15px;
 }
 
@@ -29,78 +76,51 @@
   color: #ffffff;
 }
 
-.wrapperImg {
-  position: relative;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
-}
-
-.wrapperText {
-  position: absolute;
-  color: red;
-  z-index: 1;
-  bottom: 15px;
-  white-space: nowrap;
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 25px;
-
-  color: #babbc3;
-}
-
-.wrapperImgLogo {
-  margin: 0px;
-  padding: 0px;
-}
-
-.imgLogo {
-  margin-top: 25px;
+.posterMovie {
   width: 250px;
-  height: 300px;
+  margin: 15px 10px 0px 25px;
 }
 
-.topImg {
-  height: 200px;
-  background-size: cover;
-  background-position: center;
+.wrapperOverview {
+  margin-top: 10px;
 }
 
-.originalTitle {
-  position: absolute;
-  bottom: 10px;
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 30px;
-  line-height: 30px;
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
 }
 
-.genresFilms {
-  position: absolute;
-  bottom: -17px;
-  left: 50px;
-  white-space: nowrap;
-  width: 230px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+@media (max-width: 414px) {
+  .originalTitle {
+    font-size: 20px;
+    bottom: 80px;
+  }
+
+  .posterMovie {
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
+
+  .info {
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .wrapperOverview {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
-.releaseDate {
-  position: absolute;
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  text-transform: uppercase;
-  bottom: -17px;
-  color: #babbc3;
-}
+@media (max-width: 320px) {
+  .originalTitle {
+    font-size: 20px;
+    bottom: 80px;
+  }
 
-.iconInButton {
-  margin-left: 7px;
-}
-
-.wrapperSelectedItem {
-  min-height: 100vh;
+  .posterMovie {
+    margin: auto;
+    margin-top: 25px;
+  }
 }

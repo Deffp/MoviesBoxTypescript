@@ -1,68 +1,110 @@
 .footer {
   background: #ffffff;
-  height: 150px;
-  margin: 0px;
-  padding: 0px;
+  height: 250px;
   position: relative;
 }
 
+.footerWrapper {
+  justify-content: space-between;
+  display: flex;
+  padding-top: 30px;
+}
+
 .footerLogo {
-  margin-top: 20px;
   font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 25px;
-  line-height: 31px;
-  text-transform: uppercase;
   color: #494c62;
-  text-align: center;
+  font-size: 30px;
+  line-height: 38px;
+  padding-left: 80px;
+  text-transform: uppercase;
 }
 
-.links {
-  margin-top: 20px;
-  text-align: end;
-  padding-right: 60px;
+.linksText {
+  padding-right: 80px;
+  align-self: flex-end;
 }
 
-.footerLink {
-  font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 31px;
+.link {
   color: #80818a;
-  margin: 15px;
+  padding-left: 50px;
+  font-size: 15px;
+  line-height: 25px;
+  font-family: Source Sans Pro;
 }
 
-.underScore {
+.underscore {
   position: absolute;
-  top: 70px;
+  top: 80px;
+  left: 80px;
+  width: 92%;
+  height: 1px;
   mix-blend-mode: normal;
   opacity: 0.2;
   border: 1px solid #babbc3;
 }
 
-.footerSocialLinks {
-  margin: 0px;
-  padding: 0px;
+.imgLinks {
+  padding-top: 20px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 80px;
 }
 
-.designer {
+.imgLink {
+  padding-left: 20px;
+  color: #babbc3;
+}
+
+.desigend {
   font-family: Source Sans Pro;
-  font-style: normal;
-  font-weight: normal;
   font-size: 15px;
-  line-height: 15px;
   color: #80818a;
   mix-blend-mode: normal;
-  padding-left: 45px;
   opacity: 0.5;
+  padding-left: 80px;
 }
 
-.iconLinks {
-  text-align: center;
-}
+@media (max-width: 414px) {
+  .footerWrapper {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-.iconLink {
-  padding: 30px;
+  .underscore {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .footerLogo {
+    font-size: 20px;
+    padding: 0px;
+  }
+
+  .linksText {
+    align-items: center;
+    justify-content: center;
+  }
+  .link {
+    padding-left: 15px;
+  }
+
+  .imgLinks {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .desigend {
+    font-size: 10px;
+    padding-left: 0px;
+  }
+
+  .imgLink {
+    padding-left: 0px;
+  }
 }
