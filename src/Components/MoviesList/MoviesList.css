@@ -12,3 +12,14 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+@media (max-width: 414px) {
+  .List {
+    flex-direction: column;
+  }
+
+  .wrapperList {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}

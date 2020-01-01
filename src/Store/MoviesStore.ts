@@ -37,7 +37,7 @@ class MoviesStore {
       this.loading = false;
     }
     hydrate("FavoriteMoviesList", FavoriteMoviesStore);
-    // hydrate("movie", MoviesStore);
+    hydrate("movie", MoviesStore);
   };
 
   @action setMovie = async (idMovie: number) => {
