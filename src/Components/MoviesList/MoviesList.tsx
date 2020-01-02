@@ -1,21 +1,22 @@
-import React, { Component } from "react";
-import { observer } from "mobx-react";
-// import RootStore from "../../Store/RootStore";
+import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
 
-import MovieItem from "../MovieItem/MovieItem";
-import Pagination from "../Pagination/Pagination";
-import Loader from "../Loader/Loader";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-import "./MoviesList.css";
-import MoviesStore from "../../Store/MoviesStore";
-import { IMovie } from "../../Interface/Interface";
-import { IMovieList } from "./Interface";
+import MovieItem from '../MovieItem/MovieItem';
+import Pagination from '../Pagination/Pagination';
+import Loader from '../Loader/Loader';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import './MoviesList.css';
+import MoviesStore from '../../Store/MoviesStore';
+import { IMovie } from '../../Interface/Interface';
+import { IMovieList } from './Interface';
 
+@inject('rootStore')
+@observer
 class MoviesList extends Component<IMovieList> {
   componentDidMount() {
     const {
-      match: { params }
+      match: { params },
     } = this.props;
     MoviesStore.setMovies(params.page);
   }
@@ -30,10 +31,12 @@ class MoviesList extends Component<IMovieList> {
         {loading ? (
           <Loader />
         ) : (
-          <div className='wrapperList'>
-            <div className='List'>
+          <div className="wrapperList">
+            <div className="List">
               {moviesList.map(this.renderMovieList)}
-              <Pagination location={this.props} />
+              <div className="wrapperPagination">
+                <Pagination location={this.props} />
+              </div>
             </div>
           </div>
         )}
@@ -43,4 +46,4 @@ class MoviesList extends Component<IMovieList> {
   }
 }
 
-export default observer(MoviesList);
+export default MoviesList;

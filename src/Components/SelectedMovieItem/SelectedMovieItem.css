@@ -22,6 +22,7 @@
 
 .infoMovie {
   margin-top: auto;
+  width: 100%;
 }
 
 .originalTitle {
@@ -110,6 +111,20 @@
   .wrapperOverview {
     padding-left: 10px;
     padding-right: 10px;
+  }
+
+  .genres {
+    width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .infoMovie {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
