@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { Row } from 'react-bootstrap';
 import { observer, inject } from 'mobx-react';
 
@@ -10,16 +10,14 @@ import Footer from '../Footer/Footer';
 import { IMovie } from '../../Interface/Interface';
 import './FavoriteMoviesList.css';
 
-@inject('rootStore')
-@observer
-class FavoriteMoviesList extends Component<IMovie> {
-  componentDidMount() {
-    FavoriteMoviesStore.setFavoriteMovies();
-  }
+const FavoriteMoviesList = inject('rootStore')(
+  observer((props: IMovie) => {
+    useEffect(() => {
+      FavoriteMoviesStore.setFavoriteMovies();
+    });
 
-  renderMovieList = (movie: IMovie) => <MovieItem key={movie.id} movie={movie} />;
+    const renderMovieList = (movie: IMovie) => <MovieItem key={movie.id} movie={movie} />;
 
-  render() {
     const { favoriteMoviesList, loading } = FavoriteMoviesStore;
     return (
       <div>
@@ -27,12 +25,12 @@ class FavoriteMoviesList extends Component<IMovie> {
         {loading ? (
           <Loader />
         ) : (
-          <Row className="wrapperList wrapperFavoriteMovies">{favoriteMoviesList.map(this.renderMovieList)}</Row>
+          <Row className="wrapperList wrapperFavoriteMovies">{favoriteMoviesList.map(renderMovieList)}</Row>
         )}
         <Footer />
       </div>
     );
-  }
-}
+  }),
+);
 
 export default FavoriteMoviesList;

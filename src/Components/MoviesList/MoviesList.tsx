@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { observer, inject } from 'mobx-react';
 
 import MovieItem from '../MovieItem/MovieItem';
@@ -11,19 +11,17 @@ import MoviesStore from '../../Store/MoviesStore';
 import { IMovie } from '../../Interface/Interface';
 import { IMovieList } from './Interface';
 
-@inject('rootStore')
-@observer
-class MoviesList extends Component<IMovieList> {
-  componentDidMount() {
-    const {
-      match: { params },
-    } = this.props;
-    MoviesStore.setMovies(params.page);
-  }
+const MoviesList = inject('rootStore')(
+  observer((props: IMovieList) => {
+    useEffect(() => {
+      const {
+        match: { params },
+      } = props;
+      MoviesStore.setMovies(params.page);
+    });
 
-  renderMovieList = (movie: IMovie) => <MovieItem key={movie.id} movie={movie} />;
+    const renderMovieList = (movie: IMovie) => <MovieItem key={movie.id} movie={movie} />;
 
-  render() {
     const { moviesList, loading } = MoviesStore;
     return (
       <div>
@@ -33,9 +31,9 @@ class MoviesList extends Component<IMovieList> {
         ) : (
           <div className="wrapperList">
             <div className="List">
-              {moviesList.map(this.renderMovieList)}
+              {moviesList.map(renderMovieList)}
               <div className="wrapperPagination">
-                <Pagination location={this.props} />
+                <Pagination location={props} />
               </div>
             </div>
           </div>
@@ -43,7 +41,7 @@ class MoviesList extends Component<IMovieList> {
         <Footer />
       </div>
     );
-  }
-}
+  }),
+);
 
 export default MoviesList;

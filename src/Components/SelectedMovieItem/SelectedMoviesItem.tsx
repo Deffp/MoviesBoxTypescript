@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { observer } from 'mobx-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
@@ -15,20 +15,20 @@ import Footer from '../Footer/Footer';
 import Loader from '../Loader/Loader';
 import './SelectedMovieItem.css';
 
-class SelectedMovieItem extends Component<ISelectedMovie, { movie: IMovie }> {
-  componentDidMount() {
+const SelectedMovieItem = (props: ISelectedMovie) => {
+  useEffect(() => {
     const { setMovie } = MoviesStore;
     const {
       match: {
         params: { id },
       },
-    } = this.props;
+    } = props;
     setMovie(parseInt(id));
-  }
+  });
 
-  displayGenres = (movie: IMovie) => movie.genresList.map((genres: { name: string }) => genres.name).join(',');
+  const displayGenres = (movie: IMovie) => movie.genresList.map((genres: { name: string }) => genres.name).join(',');
 
-  buttonChange = (): object => {
+  const buttonChange = (): object => {
     const { favoriteMoviesList, addMovie, removeMovie } = FavoriteMoviesStore;
     const { movie } = MoviesStore;
 
@@ -51,51 +51,49 @@ class SelectedMovieItem extends Component<ISelectedMovie, { movie: IMovie }> {
     );
   };
 
-  render() {
-    const { movie, loading } = MoviesStore;
-    return (
-      <div>
-        <Header />
-        {loading ? (
-          <Loader />
-        ) : (
-          <div>
-            <div className="wrapperSelectedMovieHeader">
-              <div
-                className="topPoster"
-                style={{
-                  backgroundImage: `url(http://image.tmdb.org/t/p/w500${movie.backdrop_path})`,
-                }}>
-                <div className="topPosterGradient" />
-                <div className="infoMovie">
-                  <span className="originalTitle">{movie.original_title}</span>
-                  <div className="genres">
-                    <span className="releaseDate">{moment(movie.release_date).format('Y')} </span>
-                    {this.displayGenres(movie)}
-                  </div>
+  const { movie, loading } = MoviesStore;
+  return (
+    <div>
+      <Header />
+      {loading ? (
+        <Loader />
+      ) : (
+        <div>
+          <div className="wrapperSelectedMovieHeader">
+            <div
+              className="topPoster"
+              style={{
+                backgroundImage: `url(http://image.tmdb.org/t/p/w500${movie.backdrop_path})`,
+              }}>
+              <div className="topPosterGradient" />
+              <div className="infoMovie">
+                <span className="originalTitle">{movie.original_title}</span>
+                <div className="genres">
+                  <span className="releaseDate">{moment(movie.release_date).format('Y')} </span>
+                  {displayGenres(movie)}
                 </div>
               </div>
             </div>
-            <div className="info">
-              <div className="infoWrapper">
-                <img
-                  className="posterMovie"
-                  alt="PosterMovie"
-                  src={`http://image.tmdb.org/t/p/w342${movie.poster_path}`}
-                />
-                <div className="btnSelectedMovie">{this.buttonChange()}</div>
-              </div>
-              <div className="wrapperOverview">
-                <h2>Overview</h2>
-                {movie.overview}
-              </div>
+          </div>
+          <div className="info">
+            <div className="infoWrapper">
+              <img
+                className="posterMovie"
+                alt="PosterMovie"
+                src={`http://image.tmdb.org/t/p/w342${movie.poster_path}`}
+              />
+              <div className="btnSelectedMovie">{buttonChange()}</div>
+            </div>
+            <div className="wrapperOverview">
+              <h2>Overview</h2>
+              {movie.overview}
             </div>
           </div>
-        )}
-        <Footer />
-      </div>
-    );
-  }
-}
+        </div>
+      )}
+      <Footer />
+    </div>
+  );
+};
 
 export default observer(SelectedMovieItem);

@@ -1,28 +1,21 @@
-import React, { Component } from "react";
+import React from 'react';
 
-import { IMovie } from "../../Interface/Interface";
+import { IMovie } from '../../Interface/Interface';
 
-export default class AltMoviePoster extends Component<{
-  movie: IMovie;
-}> {
-  checkMoviePoster = () => {
-    const { movie } = this.props;
+const AltMoviePoster = (props: { movie: IMovie }) => {
+  const checkMoviePoster = () => {
+    const { movie } = props;
     return movie.poster_path ? (
-      <img
-        className='imgPoster'
-        src={`http://image.tmdb.org/t/p/w342${movie.poster_path}`}
-        alt='Poster'
-      />
+      <img className="imgPoster" src={`http://image.tmdb.org/t/p/w342${movie.poster_path}`} alt="Poster" />
     ) : (
       <img
-        className='imgPoster'
-        src='https://www.moodfit.com/front/images/image-not-found-designerbg.png'
-        alt='Poster'
+        className="imgPoster"
+        src="https://www.moodfit.com/front/images/image-not-found-designerbg.png"
+        alt="Poster"
       />
     );
   };
+  return <div>{checkMoviePoster()}</div>;
+};
 
-  render() {
-    return <div>{this.checkMoviePoster()}</div>;
-  }
-}
+export default AltMoviePoster;
