@@ -36,7 +36,7 @@ class SelectedMovieItem extends Component<ISelectedMovie, { movie: IMovie }> {
       <button
         type="button"
         className={classNames({ buttonFavorite: true }, { active: true })}
-        onClick={() => removeMovie(movie.id)}>
+        onClick={_.partial(removeMovie, movie.id)}>
         <span>Remove from favorites</span>
         <FontAwesomeIcon className="iconInButton" icon={faStar} />
       </button>
@@ -44,7 +44,7 @@ class SelectedMovieItem extends Component<ISelectedMovie, { movie: IMovie }> {
       <button
         type="button"
         className={classNames({ buttonFavorite: true }, { active: false })}
-        onClick={() => addMovie(movie)}>
+        onClick={_.partial(addMovie, movie)}>
         <span>Add to favorites</span>
         <FontAwesomeIcon className="iconInButton" icon={faStar} />
       </button>
