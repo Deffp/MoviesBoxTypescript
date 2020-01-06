@@ -10,11 +10,6 @@ import SelectedMovieItem from '../SelectedMovieItem/SelectedMoviesItem';
 import FavoriteMoviesList from '../FavoriteMoviesList/FavoriteMoviesList';
 import './App.css';
 
-const rootStore = {
-  MoviesStore,
-  FavoriteMoviesStore,
-};
-
 const hydrate = create({
   storage: localStorage,
   jsonify: true,
@@ -24,13 +19,13 @@ hydrate('FavoriteMoviesList', FavoriteMoviesStore);
 
 const App = () => (
   <div className="Wrapper">
-    <Provider rootStore={rootStore}>
+    <Provider FavoriteMoviesStore={FavoriteMoviesStore} MoviesStore={MoviesStore}>
       <Router>
         <Switch>
-          <Route path="/page/:page" render={(props) => <MoviesList {...props} key={props.match.params.page} />} />
+          <Route path="/page/:page" component={MoviesList} />} />
           <Route path="/favorite_movies_list" component={FavoriteMoviesList} />
           <Route path="/movie/:id" component={SelectedMovieItem} />
-          <Route path="/" render={(props) => <MoviesList {...props} key={props.match.params.page} />} />
+          <Route path="/" component={MoviesList} />} />
         </Switch>
       </Router>
     </Provider>

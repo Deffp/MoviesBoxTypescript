@@ -7,7 +7,7 @@ import { IMovie } from '../../Interface/Interface';
 import AltMoviePoster from '../AltMoviePoster/AltMoviePoster';
 
 class MovieItem extends Component<{ movie: IMovie }> {
-  renderGenresMovie = (movie: IMovie) => movie.genresList.map((genres: { name: string }) => genres.name).join(',');
+  renderGenresMovie = (movie: IMovie) => movie.genresList.map((genres) => genres.name).join(',');
 
   render() {
     const { movie } = this.props;

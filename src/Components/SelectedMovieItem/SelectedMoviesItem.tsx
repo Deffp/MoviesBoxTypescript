@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import _ from 'lodash';
@@ -15,6 +15,8 @@ import Footer from '../Footer/Footer';
 import Loader from '../Loader/Loader';
 import './SelectedMovieItem.css';
 
+@inject('MoviesStore', 'FavoriteMoviesStore')
+@observer
 class SelectedMovieItem extends Component<ISelectedMovie, { movie: IMovie }> {
   componentDidMount() {
     const { setMovie } = MoviesStore;
@@ -26,7 +28,7 @@ class SelectedMovieItem extends Component<ISelectedMovie, { movie: IMovie }> {
     setMovie(parseInt(id));
   }
 
-  displayGenres = (movie: IMovie) => movie.genresList.map((genres: { name: string }) => genres.name).join(',');
+  displayGenres = (movie: IMovie) => movie.genresList.map((genres) => genres.name).join(',');
 
   buttonChange = (): object => {
     const { favoriteMoviesList, addMovie, removeMovie } = FavoriteMoviesStore;
@@ -35,7 +37,7 @@ class SelectedMovieItem extends Component<ISelectedMovie, { movie: IMovie }> {
     return _.find(favoriteMoviesList, { id: movie.id }) ? (
       <button
         type="button"
-        className={classNames({ buttonFavorite: true }, { active: true })}
+        className={classNames({ buttonFavorite: true, active: true })}
         onClick={_.partial(removeMovie, movie.id)}>
         <span>Remove from favorites</span>
         <FontAwesomeIcon className="iconInButton" icon={faStar} />
@@ -43,7 +45,7 @@ class SelectedMovieItem extends Component<ISelectedMovie, { movie: IMovie }> {
     ) : (
       <button
         type="button"
-        className={classNames({ buttonFavorite: true }, { active: false })}
+        className={classNames({ buttonFavorite: true, active: false })}
         onClick={_.partial(addMovie, movie)}>
         <span>Add to favorites</span>
         <FontAwesomeIcon className="iconInButton" icon={faStar} />
@@ -98,4 +100,4 @@ class SelectedMovieItem extends Component<ISelectedMovie, { movie: IMovie }> {
   }
 }
 
-export default observer(SelectedMovieItem);
+export default SelectedMovieItem;

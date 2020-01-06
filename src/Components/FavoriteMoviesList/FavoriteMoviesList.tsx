@@ -10,7 +10,7 @@ import Footer from '../Footer/Footer';
 import { IMovie } from '../../Interface/Interface';
 import './FavoriteMoviesList.css';
 
-@inject('rootStore')
+@inject('FavoriteMoviesStore')
 @observer
 class FavoriteMoviesList extends Component<IMovie> {
   componentDidMount() {

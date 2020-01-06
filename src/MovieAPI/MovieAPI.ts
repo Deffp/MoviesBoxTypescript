@@ -1,27 +1,28 @@
 import axios from 'axios';
 
 class MovieAPI {
-  constructor(url, key) {
+  baseURL: string | undefined;
+  key: string | undefined;
+  constructor(url: string | undefined, key: string | undefined) {
     this.baseURL = url;
     this.key = key;
   }
 
-  async getResourse(path, params) {
+  async getResourse(path: string, params?: { page: number } | undefined) {
     const instance = axios.create({
       baseURL: this.baseURL,
     });
 
-    // eslint-disable-next-line max-len
     const result = instance.get(path, { params: { api_key: this.key, ...params } }).then((res) => res.data);
     return result;
   }
 
-  async getAllMovies(page = 1) {
+  async getAllMovies(page: number = 1) {
     const { results } = await this.getResourse('/movie/now_playing', { page });
     return results;
   }
 
-  async getMovieItem(id) {
+  async getMovieItem(id: number) {
     return this.getResourse(`/movie/${id}`);
   }
 

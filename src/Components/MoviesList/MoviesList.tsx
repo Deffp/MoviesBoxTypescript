@@ -11,7 +11,7 @@ import MoviesStore from '../../Store/MoviesStore';
 import { IMovie } from '../../Interface/Interface';
 import { IMovieList } from './Interface';
 
-@inject('rootStore')
+@inject('MoviesStore')
 @observer
 class MoviesList extends Component<IMovieList> {
   componentDidMount() {
@@ -21,10 +21,25 @@ class MoviesList extends Component<IMovieList> {
     MoviesStore.setMovies(params.page);
   }
 
+  componentDidUpdate(prevProps: { match: { params: { page: number } } }) {
+    const {
+      match: {
+        params: { page },
+      },
+    } = this.props;
+
+    if (prevProps.match.params.page !== page) {
+      MoviesStore.setMovies(page);
+    }
+  }
+
   renderMovieList = (movie: IMovie) => <MovieItem key={movie.id} movie={movie} />;
 
   render() {
     const { moviesList, loading } = MoviesStore;
+    const {
+      match: { params },
+    } = this.props;
     return (
       <div>
         <Header />
@@ -35,7 +50,7 @@ class MoviesList extends Component<IMovieList> {
             <div className="List">
               {moviesList.map(this.renderMovieList)}
               <div className="wrapperPagination">
-                <Pagination location={this.props} />
+                <Pagination pages={params.page} />
               </div>
             </div>
           </div>

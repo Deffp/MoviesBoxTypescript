@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 import './Pagination.css';
 
-export default class Pagination extends Component {
-  createPagination = (page) => {
+export default class Pagination extends Component<{ pages: number }> {
+  createPagination = (page: number) => {
     const previousPage = `${page <= 1 ? 1 : page - 1}`;
     const nextPage = `${page + 1}`;
     const prevPage = page <= 3;
@@ -47,9 +47,8 @@ export default class Pagination extends Component {
   };
 
   render() {
-    const { location } = this.props;
-
-    const page = location.match.params.page ? location.match.params.page : 1;
-    return <ul className="Pagination">{this.createPagination(parseInt(page, 10))}</ul>;
+    const { pages } = this.props;
+    const page = pages ? pages : 1;
+    return <ul className="Pagination">{this.createPagination(parseInt(page.toString(), 10))}</ul>;
   }
 }
