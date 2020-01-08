@@ -7,7 +7,6 @@ import Loader from '../Loader/Loader';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import './MoviesList.css';
-import MoviesStore from '../../Store/MoviesStore';
 import { IMovie } from '../../Interface/Interface';
 import { IMovieList } from './Interface';
 
@@ -15,6 +14,7 @@ import { IMovieList } from './Interface';
 @observer
 class MoviesList extends Component<IMovieList> {
   componentDidMount() {
+    const { MoviesStore } = this.props;
     const {
       match: { params },
     } = this.props;
@@ -22,6 +22,7 @@ class MoviesList extends Component<IMovieList> {
   }
 
   componentDidUpdate(prevProps: { match: { params: { page: number } } }) {
+    const { MoviesStore } = this.props;
     const {
       match: {
         params: { page },
@@ -36,10 +37,14 @@ class MoviesList extends Component<IMovieList> {
   renderMovieList = (movie: IMovie) => <MovieItem key={movie.id} movie={movie} />;
 
   render() {
-    const { moviesList, loading } = MoviesStore;
     const {
+      loading,
       match: { params },
+      MoviesStore,
     } = this.props;
+
+    const { moviesList } = MoviesStore;
+
     return (
       <div>
         <Header />

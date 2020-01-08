@@ -8,8 +8,6 @@ import moment from 'moment';
 
 import { IMovie } from '../../Interface/Interface';
 import { ISelectedMovie } from './Interface';
-import MoviesStore from '../../Store/MoviesStore';
-import FavoriteMoviesStore from '../../Store/FavoriteMoviesStore';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Loader from '../Loader/Loader';
@@ -19,6 +17,7 @@ import './SelectedMovieItem.css';
 @observer
 class SelectedMovieItem extends Component<ISelectedMovie, { movie: IMovie }> {
   componentDidMount() {
+    const { MoviesStore } = this.props;
     const { setMovie } = MoviesStore;
     const {
       match: {
@@ -31,7 +30,8 @@ class SelectedMovieItem extends Component<ISelectedMovie, { movie: IMovie }> {
   displayGenres = (movie: IMovie) => movie.genresList.map((genres) => genres.name).join(',');
 
   buttonChange = (): object => {
-    const { favoriteMoviesList, addMovie, removeMovie } = FavoriteMoviesStore;
+    const { FavoriteMoviesStore, MoviesStore } = this.props;
+    const { favoriteMoviesList, removeMovie, addMovie } = FavoriteMoviesStore;
     const { movie } = MoviesStore;
 
     return _.find(favoriteMoviesList, { id: movie.id }) ? (
@@ -54,6 +54,7 @@ class SelectedMovieItem extends Component<ISelectedMovie, { movie: IMovie }> {
   };
 
   render() {
+    const { MoviesStore } = this.props;
     const { movie, loading } = MoviesStore;
     return (
       <div>
