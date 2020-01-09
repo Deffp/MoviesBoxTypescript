@@ -10,7 +10,7 @@
 .titleLogo {
   font-size: 30px;
   color: #ffffff;
-  padding-left: 80px;
+  padding-left: 240px;
   text-transform: uppercase;
   font-family: Source Sans Pro;
 }
@@ -18,7 +18,7 @@
 .buttonShowFavoriteMovies {
   border-radius: 8px;
   background: #ee8686;
-  margin-right: 80px;
+  margin-right: 240px;
   box-sizing: border-box;
   border: 2px solid #ffffff;
 }
@@ -59,6 +59,21 @@
 
   .buttonShowFavoriteMovies {
     margin-right: 20px;
+  }
+
+  .buttonText {
+    font-size: 13px;
+  }
+}
+
+@media (width: 768px) {
+  .titleLogo {
+    padding-left: 95px;
+    font-size: 20px;
+  }
+
+  .buttonShowFavoriteMovies {
+    margin-right: 95px;
   }
 
   .buttonText {

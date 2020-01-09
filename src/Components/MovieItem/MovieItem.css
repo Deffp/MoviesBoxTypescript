@@ -1,5 +1,5 @@
 .wrapperMovie {
-  width: 420px;
+  width: 340px;
   height: 480px;
   background: #ffffff;
   margin: 10px;
@@ -8,7 +8,7 @@
 }
 
 .imgPoster {
-  width: 420px;
+  width: 340px;
   height: 400px;
 }
 
@@ -76,10 +76,10 @@
 
 @media (max-width: 414px) {
   .wrapperMovie {
-    width: 360px;
+    width: 300px;
     height: 470px;
-    margin: 15px 0px 0px 0px;
     margin: auto;
+    margin-bottom: 15px;
   }
 
   .gradiend {
@@ -87,7 +87,7 @@
   }
 
   .imgPoster {
-    width: 360px;
+    width: 300px;
     height: 380px;
   }
 
@@ -97,13 +97,14 @@
 }
 @media (width: 411px) {
   .wrapperMovie {
-    width: 411px;
+    width: 300px;
     height: 470px;
-    margin: 15px 0px 0px 0px;
+    margin: auto;
+    margin-bottom: 15px;
   }
 
   .imgPoster {
-    width: 411px;
+    width: 300px;
     height: 380px;
   }
 }
@@ -121,5 +122,14 @@
 
   .voteAverage {
     bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapperMovie {
+    width: 280px;
+  }
+  .imgPoster {
+    width: 280px;
   }
 }

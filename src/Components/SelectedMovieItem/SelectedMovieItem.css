@@ -23,6 +23,7 @@
 .infoMovie {
   margin-top: auto;
   width: 100%;
+  z-index: 10;
 }
 
 .originalTitle {
@@ -84,6 +85,7 @@
 
 .wrapperOverview {
   margin-top: 10px;
+  font-family: Source Sans Pro;
 }
 
 .infoWrapper {
@@ -93,8 +95,8 @@
 
 @media (max-width: 414px) {
   .originalTitle {
-    font-size: 20px;
-    bottom: 80px;
+    font-size: 30px;
+    bottom: 60px;
   }
 
   .posterMovie {
@@ -109,8 +111,9 @@
   }
 
   .wrapperOverview {
-    padding-left: 10px;
-    padding-right: 10px;
+    /* padding-left: 10px;
+    padding-right: 10px; */
+    padding: 20px 20px 20px 20px;
   }
 
   .genres {

@@ -28,7 +28,6 @@ class MoviesList extends Component<IMovieList> {
         params: { page },
       },
     } = this.props;
-
     if (prevProps.match.params.page !== page) {
       MoviesStore.setMovies(page);
     }

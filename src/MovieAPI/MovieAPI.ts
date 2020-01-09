@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-const instance = axios.create({
-  baseURL: 'https://api.themoviedb.org/3/',
-});
 class MovieAPI {
   baseURL: string | undefined;
   key: string | undefined;
@@ -10,8 +7,13 @@ class MovieAPI {
     this.baseURL = url;
     this.key = key;
   }
+
+  instance = axios.create({
+    baseURL: 'https://api.themoviedb.org/3/',
+  });
+
   async getResourse(path: string, params?: { page: number } | undefined) {
-    const result = instance.get(path, { params: { api_key: this.key, ...params } }).then((res) => res.data);
+    const result = this.instance.get(path, { params: { api_key: this.key, ...params } }).then((res) => res.data);
     return result;
   }
 
