@@ -4,7 +4,6 @@ class MovieAPI {
   baseURL: string | undefined;
   key: string | undefined;
   constructor(url: string | undefined, key: string | undefined) {
-    this.baseURL = url;
     this.key = key;
   }
 
